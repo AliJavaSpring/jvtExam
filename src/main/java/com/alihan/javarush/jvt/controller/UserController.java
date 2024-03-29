@@ -42,7 +42,7 @@ public class UserController {
         return ResponseEntity.ok().body(userService.getUsers());
     }
 
-    @PostMapping("/user/save")
+    @PostMapping("/createUser")
     public ResponseEntity<User> saveUser(@RequestBody User user) {
         System.out.println(user);
         URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/user/save").toUriString());
@@ -97,6 +97,11 @@ public class UserController {
             throw new RuntimeException("Токен не удалось обновить");
         }
     }
-}
+        @DeleteMapping("/deleteUser")
+        public void deleteUser(String username,String roleName, Long id) throws Exception {
+            userService.deleteUser(username, roleName, id);
+            System.out.println("Пользователь удален.");
+        }
+    }
 
 

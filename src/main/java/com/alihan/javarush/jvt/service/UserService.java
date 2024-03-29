@@ -16,4 +16,8 @@ public interface UserService {
     User getUser(String username);
 
     List<User> getUsers();
+
+    User blockUser(User user);
+
+    void deleteUser(String username,String roleName, Long id);
 }

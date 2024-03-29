@@ -7,6 +7,8 @@ import com.alihan.javarush.jvt.repo.UserRepo;
 import com.alihan.javarush.jvt.service.UserService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -66,5 +68,16 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     @Override
     public List<User> getUsers() {
         return userRepo.findAll();
+    }
+
+    @Override
+    public User blockUser(User user) {
+        return null;
+    }
+
+    @Override
+    public void deleteUser(String username,String roleName, Long id) {
+        userRepo.deleteById(id);
+        System.out.println("Пользователь удален.");
     }
 }
